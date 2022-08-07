@@ -19,24 +19,30 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vE5-S0-gXq">
-                                    <rect key="frame" x="303" y="6" width="103" height="31"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vE5-S0-gXq">
+                                    <rect key="frame" x="315.5" y="6" width="90.5" height="31"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="Изменить"/>
                                     <connections>
                                         <action selector="pushEditAction:" destination="0Cz-f8-eck" eventType="touchUpInside" id="0BA-x9-jUU"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Выполнено - 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hx7-tj-58k">
-                                    <rect key="frame" x="21" y="10" width="141" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выполнено - 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hx7-tj-58k">
+                                    <rect key="frame" x="21" y="10" width="117" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" systemColor="placeholderTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="Hx7-tj-58k" firstAttribute="leading" secondItem="y3Z-s5-D85" secondAttribute="leading" constant="21" id="RXe-39-OBz"/>
+                                <constraint firstAttribute="bottom" secondItem="vE5-S0-gXq" secondAttribute="bottom" constant="7" id="SBy-b3-b7u"/>
+                                <constraint firstAttribute="trailing" secondItem="vE5-S0-gXq" secondAttribute="trailing" constant="8" id="eND-qw-hb7"/>
+                                <constraint firstItem="Hx7-tj-58k" firstAttribute="top" secondItem="y3Z-s5-D85" secondAttribute="top" constant="10" id="fxM-zc-qGL"/>
+                                <constraint firstAttribute="bottom" secondItem="Hx7-tj-58k" secondAttribute="bottom" constant="13" id="gPY-0t-cgd"/>
+                                <constraint firstItem="vE5-S0-gXq" firstAttribute="top" secondItem="y3Z-s5-D85" secondAttribute="top" constant="6" id="jO0-sy-PIj"/>
+                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="qai-y3-jJe" style="IBUITableViewCellStyleDefault" id="Ppl-CT-adD">
