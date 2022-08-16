@@ -14,6 +14,7 @@
 		63A57EC5289ACB470038B3A4 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A57EC4289ACB470038B3A4 /* TableViewController.swift */; };
 		63A57EC7289ACBB30038B3A4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A57EC6289ACBB30038B3A4 /* Model.swift */; };
 		63A57EC8289C27A30038B3A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63A57EB9289AC3840038B3A4 /* Assets.xcassets */; };
+		63FB201E28ABE0660042136B /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FB201D28ABE0660042136B /* EditViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		63A57EBE289AC3840038B3A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63A57EC4289ACB470038B3A4 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		63A57EC6289ACBB30038B3A4 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		63FB201D28ABE0660042136B /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				63A57EC4289ACB470038B3A4 /* TableViewController.swift */,
 				63A57EC6289ACBB30038B3A4 /* Model.swift */,
 				63A57EB2289AC3830038B3A4 /* SceneDelegate.swift */,
+				63FB201D28ABE0660042136B /* EditViewController.swift */,
 				63A57EB6289AC3830038B3A4 /* Main.storyboard */,
 				63A57EB9289AC3840038B3A4 /* Assets.xcassets */,
 				63A57EBB289AC3840038B3A4 /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63FB201E28ABE0660042136B /* EditViewController.swift in Sources */,
 				63A57EB1289AC3830038B3A4 /* AppDelegate.swift in Sources */,
 				63A57EC5289ACB470038B3A4 /* TableViewController.swift in Sources */,
 				63A57EB3289AC3830038B3A4 /* SceneDelegate.swift in Sources */,
