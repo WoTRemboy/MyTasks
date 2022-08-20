@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -62,6 +63,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" name="otherColor"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -93,7 +95,7 @@
                                 <rect key="frame" x="0.0" y="49" width="414" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGz-bi-dJ3">
-                                        <rect key="frame" x="6" y="6.5" width="91" height="31"/>
+                                        <rect key="frame" x="7" y="6.5" width="91" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Отменить"/>
                                         <connections>
@@ -107,7 +109,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQ9-Pd-M1T">
-                                        <rect key="frame" x="311.5" y="6.5" width="96.5" height="31"/>
+                                        <rect key="frame" x="310.5" y="6.5" width="96.5" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Сохранить"/>
                                         <connections>
@@ -120,15 +122,15 @@
                                     <constraint firstAttribute="height" constant="44" id="26r-GX-ISe"/>
                                     <constraint firstItem="jV6-1T-Wf5" firstAttribute="centerX" secondItem="W4m-yk-Zb2" secondAttribute="centerX" id="8kO-94-JcW"/>
                                     <constraint firstItem="lGz-bi-dJ3" firstAttribute="centerY" secondItem="W4m-yk-Zb2" secondAttribute="centerY" id="If7-lY-Klg"/>
-                                    <constraint firstAttribute="trailing" secondItem="nQ9-Pd-M1T" secondAttribute="trailing" constant="6" id="KtZ-hs-hgC"/>
                                     <constraint firstItem="nQ9-Pd-M1T" firstAttribute="centerY" secondItem="W4m-yk-Zb2" secondAttribute="centerY" id="Oau-8e-knq"/>
+                                    <constraint firstItem="lGz-bi-dJ3" firstAttribute="leading" secondItem="W4m-yk-Zb2" secondAttribute="leading" constant="7" id="VGZ-r4-e6a"/>
+                                    <constraint firstAttribute="trailing" secondItem="nQ9-Pd-M1T" secondAttribute="trailing" constant="7" id="mUo-tT-aVq"/>
                                     <constraint firstItem="jV6-1T-Wf5" firstAttribute="centerY" secondItem="W4m-yk-Zb2" secondAttribute="centerY" id="z9w-MB-TSb"/>
-                                    <constraint firstItem="lGz-bi-dJ3" firstAttribute="leading" secondItem="W4m-yk-Zb2" secondAttribute="leading" constant="6" id="zh7-v3-XIM"/>
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="suu-9o-KIA">
                                 <rect key="frame" x="20" y="101" width="374" height="170"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="otherColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="qCr-pM-ki2"/>
                                 </constraints>
@@ -190,14 +192,14 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="otherColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="placeholderTextColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

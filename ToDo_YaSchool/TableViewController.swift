@@ -25,8 +25,11 @@ class TableViewController: UITableViewController {
         button.layer.cornerRadius = 25
         return button
     }()
+    let config = UIImage.SymbolConfiguration(paletteColors: [.systemRed, .systemGreen])
     
-    let imageCheck = UIImage(systemName: "checkmark.circle.fill")?.withTintColor(.green, renderingMode: .alwaysOriginal)
+    let imageCheck = UIImage(systemName: "checkmark.circle.fill", withConfiguration: UIImage.SymbolConfiguration(paletteColors: [.white, .green]))
+    
+   // let imageCheck = UIImage(systemName: "checkmark.circle.fill")?.withTintColor(.green, renderingMode: .alwaysOriginal)
     
     let imageUncheck = UIImage(systemName: "circle", withConfiguration: UIImage.SymbolConfiguration(weight: .ultraLight))?.withTintColor(.gray, renderingMode: .alwaysOriginal)
     
@@ -86,7 +89,9 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.backgroundColor = UIColor.systemGroupedBackground
+        //overrideUserInterfaceStyle = .dark
+        
+        tableView.backgroundColor = UIColor(named: "backgroundColor")
         view.addSubview(floatingButton)
         floatingButton.addTarget(self, action: #selector(didPresentTap), for: .touchUpInside)
 
@@ -122,6 +127,7 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let currentItem = toDoItems[indexPath.row]
+       // cell.tintColor = UIColor(named: "otherColor")
         cell.textLabel?.text = currentItem["Name"] as? String
 
         if (currentItem["isCompleted"] as? Bool) == true {
