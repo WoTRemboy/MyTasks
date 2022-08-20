@@ -132,15 +132,22 @@ class TableViewController: UITableViewController {
 
         if (currentItem["isCompleted"] as? Bool) == true {
             cell.imageView?.image = imageCheck
+            cell.textLabel?.textColor = .lightGray
+            
+        //            let attributeString: NSMutableAttributedString = NSMutableAttributedString(string: (cell.textLabel?.text)!)
+//            attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSRange(location: 0, length: attributeString.length))
+            
             checkCount += 1
             checkCountLabel.text = "Выполнено - \(checkCount)"
         } else {
             cell.imageView?.image = imageUncheck
+            cell.textLabel?.textColor = UIColor(named: "textColor")
         }
         
         if tableView.isEditing {
             pushEditOutlet.setTitle("Принять", for: .normal)
             checkCountLabel.text = "Выполнено - 0"
+            
             cell.textLabel?.alpha = 0.4
             cell.imageView?.alpha = 0.4
             
@@ -205,10 +212,12 @@ class TableViewController: UITableViewController {
         
         if changeState(at: indexPath.row) {
             tableView.cellForRow(at: indexPath)?.imageView?.image = imageCheck
+            tableView.cellForRow(at: indexPath)?.textLabel?.textColor = .lightGray
             checkCount += 1
             checkCountLabel.text = "Выполнено - \(checkCount)"
         } else {
             tableView.cellForRow(at: indexPath)?.imageView?.image = imageUncheck
+            tableView.cellForRow(at: indexPath)?.textLabel?.textColor = UIColor(named: "textColor")
             checkCount -= 1
             checkCountLabel.text = "Выполнено - \(checkCount)"
         }
