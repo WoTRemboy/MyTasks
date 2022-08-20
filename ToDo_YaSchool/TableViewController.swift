@@ -8,6 +8,7 @@
 import UIKit
 
 class TableViewController: UITableViewController {
+    
 
     private let floatingButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
@@ -36,6 +37,22 @@ class TableViewController: UITableViewController {
     
     @IBOutlet weak var pushEditOutlet: UIButton!
 
+    
+    @IBAction func didPresentTap() {
+        let vc = storyboard?.instantiateViewController(identifier: "other") as! EditViewController
+        
+//        let nc = storyboard?.instantiateViewController(identifier: "NavigationControllerID") as! UINavigationController
+        
+        vc.completionHandler = { text in
+            let newItem = text
+            addItem(nameItem: newItem!)
+            self.checkCount -= self.checkCount
+            self.tableView.reloadData()
+        }
+        present(vc, animated: true)
+//        present(nc, animated: true)
+    }
+    
     @IBAction func pushEditAction(_ sender: Any) {
         tableView.setEditing(!tableView.isEditing, animated: true)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -71,7 +88,7 @@ class TableViewController: UITableViewController {
         
         tableView.backgroundColor = UIColor.systemGroupedBackground
         view.addSubview(floatingButton)
-        floatingButton.addTarget(self, action: #selector(pushAddAction), for: .touchUpInside)
+        floatingButton.addTarget(self, action: #selector(didPresentTap), for: .touchUpInside)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -120,12 +137,25 @@ class TableViewController: UITableViewController {
             checkCountLabel.text = "Выполнено - 0"
             cell.textLabel?.alpha = 0.4
             cell.imageView?.alpha = 0.4
+            
+            floatingButton.alpha = 1
+            UIView.animate(withDuration: 0.3, animations: {
+                self.floatingButton.alpha = 0
+            }) { (finished) in
+                self.floatingButton.isHidden = finished
+            }
             checkCount -= checkCount
   
         } else {
             pushEditOutlet.setTitle("Изменить", for: .normal)
             cell.textLabel?.alpha = 1
             cell.imageView?.alpha = 1
+            
+            floatingButton.alpha = 0
+            floatingButton.isHidden = false
+            UIView.animate(withDuration: 0.3) {
+                self.floatingButton.alpha = 1
+            }
         }
         
         return cell

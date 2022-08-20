@@ -7,11 +7,64 @@
 
 import UIKit
 
-class EditViewController: UIViewController {
+class EditViewController: UIViewController, UITextViewDelegate {
+    
+    let placeholder = "Что нужно сделать?"
 
+    
+    public var completionHandler: ((String?) -> Void)?
+
+    @IBOutlet weak var editTextView: UITextView!
+    
+    @IBOutlet weak var saveButton: UIButton!
+    
+    @IBAction func saveButtonTapped(_ sender: Any) {
+        completionHandler?(editTextView.text)
+        dismiss(animated: true)
+    }
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        dismiss(animated: true)
+    }
+
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+            self.saveButton.isEnabled = true
+            
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = placeholder
+            textView.textColor = UIColor.lightGray
+            self.saveButton.isEnabled = false
+        }
+    }
+    
+    func textViewPlaceholder(_ textView: UITextView) {
+        textView.delegate = self
+        textView.text = placeholder
+        textView.textColor = UIColor.lightGray
+        self.saveButton.isEnabled = false
+    }
+    
+    func editTextAction(_ textView: UITextView) {
+        textView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 0)
+        textView.font = UIFont.systemFont(ofSize: 16)
+        textView.layer.cornerRadius = 10
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Дело"
 
+        textViewPlaceholder(editTextView)
+        editTextAction(editTextView)
+        
         // Do any additional setup after loading the view.
     }
     
