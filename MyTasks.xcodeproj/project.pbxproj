@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		63A57EAD289AC3830038B3A4 /* ToDo_YaSchool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo_YaSchool.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		63A57EAD289AC3830038B3A4 /* MyTasks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTasks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63A57EB0289AC3830038B3A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63A57EB2289AC3830038B3A4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		63A57EB7289AC3830038B3A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -52,7 +52,7 @@
 		63A57EAE289AC3830038B3A4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				63A57EAD289AC3830038B3A4 /* ToDo_YaSchool.app */,
+				63A57EAD289AC3830038B3A4 /* MyTasks.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -76,9 +76,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		63A57EAC289AC3830038B3A4 /* ToDo_YaSchool */ = {
+		63A57EAC289AC3830038B3A4 /* MyTasks */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 63A57EC1289AC3840038B3A4 /* Build configuration list for PBXNativeTarget "ToDo_YaSchool" */;
+			buildConfigurationList = 63A57EC1289AC3840038B3A4 /* Build configuration list for PBXNativeTarget "MyTasks" */;
 			buildPhases = (
 				63A57EA9289AC3830038B3A4 /* Sources */,
 				63A57EAA289AC3830038B3A4 /* Frameworks */,
@@ -88,9 +88,9 @@
 			);
 			dependencies = (
 			);
-			name = ToDo_YaSchool;
+			name = MyTasks;
 			productName = ToDo_YaSchool;
-			productReference = 63A57EAD289AC3830038B3A4 /* ToDo_YaSchool.app */;
+			productReference = 63A57EAD289AC3830038B3A4 /* MyTasks.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -108,7 +108,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 63A57EA8289AC3830038B3A4 /* Build configuration list for PBXProject "ToDo_YaSchool" */;
+			buildConfigurationList = 63A57EA8289AC3830038B3A4 /* Build configuration list for PBXProject "MyTasks" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -121,7 +121,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				63A57EAC289AC3830038B3A4 /* ToDo_YaSchool */,
+				63A57EAC289AC3830038B3A4 /* MyTasks */,
 			);
 		};
 /* End PBXProject section */
@@ -298,6 +298,7 @@
 				DEVELOPMENT_TEAM = ZFH6DW7S4P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ToDo_YaSchool/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MyTasks;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -308,7 +309,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.remby.ToDo-YaSchool";
+				PRODUCT_BUNDLE_IDENTIFIER = com.remby.MyTasks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -326,6 +327,7 @@
 				DEVELOPMENT_TEAM = ZFH6DW7S4P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ToDo_YaSchool/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MyTasks;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -336,7 +338,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.remby.ToDo-YaSchool";
+				PRODUCT_BUNDLE_IDENTIFIER = com.remby.MyTasks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -347,7 +349,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		63A57EA8289AC3830038B3A4 /* Build configuration list for PBXProject "ToDo_YaSchool" */ = {
+		63A57EA8289AC3830038B3A4 /* Build configuration list for PBXProject "MyTasks" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				63A57EBF289AC3840038B3A4 /* Debug */,
@@ -356,7 +358,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		63A57EC1289AC3840038B3A4 /* Build configuration list for PBXNativeTarget "ToDo_YaSchool" */ = {
+		63A57EC1289AC3840038B3A4 /* Build configuration list for PBXNativeTarget "MyTasks" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				63A57EC2289AC3840038B3A4 /* Debug */,

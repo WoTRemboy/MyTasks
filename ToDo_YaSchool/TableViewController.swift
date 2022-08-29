@@ -7,6 +7,8 @@
 
 import UIKit
 
+var access = true
+
 class TableViewController: UITableViewController {
     
 
@@ -25,11 +27,15 @@ class TableViewController: UITableViewController {
         button.layer.cornerRadius = 25
         return button
     }()
+    
     let config = UIImage.SymbolConfiguration(paletteColors: [.systemRed, .systemGreen])
     
-    let imageCheck = UIImage(systemName: "checkmark.circle.fill", withConfiguration: UIImage.SymbolConfiguration(paletteColors: [.white, .green]))
+    let imageCheck = UIImage(systemName: "checkmark.circle.fill", withConfiguration: UIImage.SymbolConfiguration(paletteColors: [.white, .systemGreen]))
     
-   // let imageCheck = UIImage(systemName: "checkmark.circle.fill")?.withTintColor(.green, renderingMode: .alwaysOriginal)
+    let imageCheckSwipe = UIImage(systemName: "checkmark.circle.fill", withConfiguration: UIImage.SymbolConfiguration(paletteColors: [.systemGreen, .white]))
+    
+    let imageUncheckSwipe = UIImage(systemName: "x.circle.fill", withConfiguration: UIImage.SymbolConfiguration(paletteColors: [.systemRed, .white]))
+    
     
     let imageUncheck = UIImage(systemName: "circle", withConfiguration: UIImage.SymbolConfiguration(weight: .ultraLight))?.withTintColor(.gray, renderingMode: .alwaysOriginal)
     
@@ -44,8 +50,6 @@ class TableViewController: UITableViewController {
     @IBAction func didPresentTap() {
         let vc = storyboard?.instantiateViewController(identifier: "other") as! EditViewController
         
-//        let nc = storyboard?.instantiateViewController(identifier: "NavigationControllerID") as! UINavigationController
-        
         vc.completionHandler = { text in
             let newItem = text
             addItem(nameItem: newItem!)
@@ -53,7 +57,6 @@ class TableViewController: UITableViewController {
             self.tableView.reloadData()
         }
         present(vc, animated: true)
-//        present(nc, animated: true)
     }
     
     @IBAction func pushEditAction(_ sender: Any) {
@@ -63,43 +66,13 @@ class TableViewController: UITableViewController {
         }
     }
     
-    
-    @IBAction func pushAddAction(_ sender: Any) {
-        let alertController = UIAlertController(title: "Создать новую запись", message: nil, preferredStyle: .alert)
-        alertController.addTextField {(textField) in
-            textField.placeholder = "Название задачи"
-    }
-    
-        let alertAction1 = UIAlertAction(title: "Отменить", style: .cancel) { alert in
-            
-        }
-        
-        let alertAction2 = UIAlertAction(title: "Создать", style: .default) { alert in
-            let newItem = alertController.textFields![0].text
-            addItem(nameItem: newItem!)
-            self.checkCount -= self.checkCount
-            self.tableView.reloadData()
-        }
-        
-        alertController.addAction(alertAction1)
-        alertController.addAction(alertAction2)
-        present(alertController, animated: true, completion: nil)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //overrideUserInterfaceStyle = .dark
-        
+                
         tableView.backgroundColor = UIColor(named: "backgroundColor")
+        
         view.addSubview(floatingButton)
         floatingButton.addTarget(self, action: #selector(didPresentTap), for: .touchUpInside)
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     override func viewDidLayoutSubviews() {
@@ -109,7 +82,6 @@ class TableViewController: UITableViewController {
         floatingButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         floatingButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         floatingButton.bottomAnchor.constraint(equalTo: self.view.layoutMarginsGuide.bottomAnchor, constant: -10).isActive = true
-        //floatingButton.frame = CGRect(x: view.frame.midX - 30, y: view.frame.midY + 100, width: 60, height: 60)
     }
 
     // MARK: - Table view data source
@@ -125,18 +97,15 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
         let currentItem = toDoItems[indexPath.row]
-       // cell.tintColor = UIColor(named: "otherColor")
         cell.textLabel?.text = currentItem["Name"] as? String
 
         if (currentItem["isCompleted"] as? Bool) == true {
             cell.imageView?.image = imageCheck
             cell.textLabel?.textColor = .lightGray
-            
-        //            let attributeString: NSMutableAttributedString = NSMutableAttributedString(string: (cell.textLabel?.text)!)
-//            attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSRange(location: 0, length: attributeString.length))
-            
             checkCount += 1
             checkCountLabel.text = "Выполнено - \(checkCount)"
         } else {
@@ -144,18 +113,21 @@ class TableViewController: UITableViewController {
             cell.textLabel?.textColor = UIColor(named: "textColor")
         }
         
+        
         if tableView.isEditing {
             pushEditOutlet.setTitle("Принять", for: .normal)
             checkCountLabel.text = "Выполнено - 0"
-            
             cell.textLabel?.alpha = 0.4
             cell.imageView?.alpha = 0.4
             
-            floatingButton.alpha = 1
-            UIView.animate(withDuration: 0.3, animations: {
-                self.floatingButton.alpha = 0
-            }) { (finished) in
-                self.floatingButton.isHidden = finished
+            if access {
+                floatingButton.alpha = 1
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.floatingButton.alpha = 0
+                }) { (finished) in
+                    self.floatingButton.isHidden = finished
+                }
+                access = false
             }
             checkCount -= checkCount
   
@@ -163,31 +135,58 @@ class TableViewController: UITableViewController {
             pushEditOutlet.setTitle("Изменить", for: .normal)
             cell.textLabel?.alpha = 1
             cell.imageView?.alpha = 1
-            
             floatingButton.alpha = 0
             floatingButton.isHidden = false
             UIView.animate(withDuration: 0.3) {
                 self.floatingButton.alpha = 1
             }
+            access = true
         }
         
         return cell
     }
     
-   /* override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
-        let action: UIContextualAction
-        
-        if changeState(at: indexPath.row) {
-            tableView.cellForRow(at: indexPath)?.imageView?.image = imageCheck
-        } else {
-            tableView.cellForRow(at: indexPath)?.imageView?.image = imageUncheck
-        }
-        
-        action.backgroundColor = .blue
+   override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+       
+       let isChecked = !(toDoItems[indexPath.row]["isCompleted"] as! Bool)
+       
+       let action = UIContextualAction(style: .normal, title: "check") {(action, sourceView, completionHandler) in
+           
+           toDoItems[indexPath.row]["isCompleted"] = (toDoItems[indexPath.row]["isCompleted"] as! Bool)
+           completionHandler(true)
+           
+           if changeState(at: indexPath.row) {
+               tableView.cellForRow(at: indexPath)?.imageView?.image = self.imageCheck
+               tableView.cellForRow(at: indexPath)?.textLabel?.textColor = .lightGray
+               
+               action.backgroundColor = .green
+               action.image = self.imageCheckSwipe
+               
+               self.checkCount += 1
+               self.checkCountLabel.text = "Выполнено - \(self.checkCount)"
+               
+           } else {
+               tableView.cellForRow(at: indexPath)?.imageView?.image = self.imageUncheck
+               tableView.cellForRow(at: indexPath)?.textLabel?.textColor = UIColor(named: "textColor")
+               
+               action.backgroundColor = .lightGray
+               action.image = self.imageUncheck
+               
+               self.checkCount -= 1
+               self.checkCountLabel.text = "Выполнено - \(self.checkCount)"
+           }
+       }
+       
+       if isChecked {
+           action.backgroundColor = .systemGreen
+           action.image = self.imageCheckSwipe
+       } else {
+           action.backgroundColor = .systemGray3
+           action.image = self.imageUncheckSwipe
+       }
         return UISwipeActionsConfiguration(actions: [action])
     }
-*/
+
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
@@ -208,20 +207,28 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
         tableView.deselectRow(at: indexPath, animated: true)
+
+        let vc = storyboard?.instantiateViewController(identifier: "other") as! EditViewController
         
-        if changeState(at: indexPath.row) {
-            tableView.cellForRow(at: indexPath)?.imageView?.image = imageCheck
-            tableView.cellForRow(at: indexPath)?.textLabel?.textColor = .lightGray
-            checkCount += 1
-            checkCountLabel.text = "Выполнено - \(checkCount)"
-        } else {
-            tableView.cellForRow(at: indexPath)?.imageView?.image = imageUncheck
-            tableView.cellForRow(at: indexPath)?.textLabel?.textColor = UIColor(named: "textColor")
-            checkCount -= 1
-            checkCountLabel.text = "Выполнено - \(checkCount)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let currentItem = toDoItems[indexPath.row]
+
+        cell.textLabel?.text = currentItem["Name"] as? String
+        vc.placeholder = (cell.textLabel?.text)!
+
+        vc.completionHandler = { text in
+            let newItem = text
+            addItem(nameItem: newItem!)
+            
+            removeItem(at: indexPath.row)
+            moveItem(fromIndex: toDoItems.endIndex - 1, toIndex: indexPath.row)
+            
+            self.checkCount -= self.checkCount
+            self.tableView.reloadData()
         }
-        
+        present(vc, animated: true)
     }
     
     // Override to support rearranging the table view.
@@ -240,6 +247,7 @@ class TableViewController: UITableViewController {
             return .none
         }
     }
+    
     
     override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
         return false

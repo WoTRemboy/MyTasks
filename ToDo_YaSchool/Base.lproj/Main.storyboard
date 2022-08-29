@@ -12,11 +12,11 @@
         <!--Мои дела-->
         <scene sceneID="Fdm-gX-7Bo">
             <objects>
-                <tableViewController id="0Cz-f8-eck" customClass="TableViewController" customModule="ToDo_YaSchool" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="myTasks" id="0Cz-f8-eck" customClass="TableViewController" customModule="ToDo_YaSchool" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="7dP-Yd-aF4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <color key="backgroundColor" name="backgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="y3Z-s5-D85">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -94,7 +94,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W4m-yk-Zb2">
                                 <rect key="frame" x="0.0" y="49" width="414" height="44"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGz-bi-dJ3">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGz-bi-dJ3">
                                         <rect key="frame" x="7" y="6.5" width="91" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Отменить"/>
@@ -108,7 +108,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQ9-Pd-M1T">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQ9-Pd-M1T">
                                         <rect key="frame" x="310.5" y="6.5" width="96.5" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Сохранить"/>
@@ -117,7 +117,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                <color key="backgroundColor" name="backgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="26r-GX-ISe"/>
                                     <constraint firstItem="jV6-1T-Wf5" firstAttribute="centerX" secondItem="W4m-yk-Zb2" secondAttribute="centerX" id="8kO-94-JcW"/>
@@ -138,16 +138,49 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HiX-8L-aXw">
+                                <rect key="frame" x="20" y="291" width="374" height="50"/>
+                                <color key="backgroundColor" name="otherColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="4yB-sl-uhJ"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Сохранить"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Сохранить"/>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="nop-hB-vPv" eventType="touchUpInside" id="hMF-Ag-Q3k"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zq1-dC-fw6">
+                                <rect key="frame" x="20" y="351" width="374" height="50"/>
+                                <color key="backgroundColor" name="otherColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ENZ-fl-9I5"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Отменить">
+                                    <color key="baseForegroundColor" systemColor="systemRedColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="nop-hB-vPv" eventType="touchUpInside" id="Owu-L6-onH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9AG-fx-qX9"/>
-                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <color key="backgroundColor" name="backgroundColor"/>
                         <constraints>
+                            <constraint firstItem="HiX-8L-aXw" firstAttribute="leading" secondItem="9AG-fx-qX9" secondAttribute="leading" constant="20" id="09v-X6-JBd"/>
                             <constraint firstItem="suu-9o-KIA" firstAttribute="leading" secondItem="9AG-fx-qX9" secondAttribute="leading" constant="20" id="1fp-hf-3PB"/>
+                            <constraint firstItem="9AG-fx-qX9" firstAttribute="trailing" secondItem="Zq1-dC-fw6" secondAttribute="trailing" constant="20" id="6Pl-A9-GD6"/>
+                            <constraint firstItem="Zq1-dC-fw6" firstAttribute="leading" secondItem="9AG-fx-qX9" secondAttribute="leading" constant="20" id="GqQ-Qz-SnO"/>
                             <constraint firstItem="W4m-yk-Zb2" firstAttribute="leading" secondItem="9AG-fx-qX9" secondAttribute="leading" id="UkY-UQ-RvG"/>
+                            <constraint firstItem="Zq1-dC-fw6" firstAttribute="top" secondItem="HiX-8L-aXw" secondAttribute="bottom" constant="10" id="VQS-gs-UDu"/>
                             <constraint firstItem="W4m-yk-Zb2" firstAttribute="top" secondItem="9AG-fx-qX9" secondAttribute="top" constant="5" id="W8x-Qg-V03"/>
+                            <constraint firstItem="HiX-8L-aXw" firstAttribute="top" secondItem="suu-9o-KIA" secondAttribute="bottom" constant="20" id="eGh-IZ-q0W"/>
                             <constraint firstItem="suu-9o-KIA" firstAttribute="centerX" secondItem="HVS-2k-Ivp" secondAttribute="centerX" id="jL6-9G-h8D"/>
                             <constraint firstItem="suu-9o-KIA" firstAttribute="top" secondItem="W4m-yk-Zb2" secondAttribute="bottom" constant="8" symbolic="YES" id="maW-QL-FxB"/>
                             <constraint firstItem="W4m-yk-Zb2" firstAttribute="trailing" secondItem="9AG-fx-qX9" secondAttribute="trailing" id="ndY-y7-lXo"/>
+                            <constraint firstItem="9AG-fx-qX9" firstAttribute="trailing" secondItem="HiX-8L-aXw" secondAttribute="trailing" constant="20" id="xLl-k6-opC"/>
                             <constraint firstItem="9AG-fx-qX9" firstAttribute="trailing" secondItem="suu-9o-KIA" secondAttribute="trailing" constant="20" id="xeW-sN-khp"/>
                         </constraints>
                     </view>
@@ -164,8 +197,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="Zq1-dC-fw6" id="PEJ-hK-TSE"/>
                         <outlet property="editTextView" destination="suu-9o-KIA" id="2Mj-zd-wNx"/>
-                        <outlet property="saveButton" destination="nQ9-Pd-M1T" id="DcX-SE-XAl"/>
+                        <outlet property="saveButton" destination="HiX-8L-aXw" id="hAg-65-cTF"/>
+                        <outlet property="taskTitle" destination="jV6-1T-Wf5" id="MJN-Og-gwb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EQb-Eo-Y1L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -192,6 +227,9 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="backgroundColor">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="otherColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
@@ -203,6 +241,9 @@
         </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

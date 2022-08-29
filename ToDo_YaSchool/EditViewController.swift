@@ -9,12 +9,18 @@ import UIKit
 
 class EditViewController: UIViewController, UITextViewDelegate {
     
-    let placeholder = "Что нужно сделать?"
+    var placeholder = "Что нужно сделать?"
 
     
     public var completionHandler: ((String?) -> Void)?
+    
+    
 
+    @IBOutlet weak var taskTitle: UILabel!
+    
     @IBOutlet weak var editTextView: UITextView!
+
+    @IBOutlet weak var cancelButton: UIButton!
     
     @IBOutlet weak var saveButton: UIButton!
     
@@ -22,6 +28,7 @@ class EditViewController: UIViewController, UITextViewDelegate {
         completionHandler?(editTextView.text)
         dismiss(animated: true)
     }
+    
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true)
@@ -45,10 +52,16 @@ class EditViewController: UIViewController, UITextViewDelegate {
     }
     
     func textViewPlaceholder(_ textView: UITextView) {
-        textView.delegate = self
-        textView.text = placeholder
-        textView.textColor = UIColor.lightGray
-        self.saveButton.isEnabled = false
+        if placeholder == "Что нужно сделать?" {
+            textView.delegate = self
+            textView.text = placeholder
+            textView.textColor = UIColor.lightGray
+            self.saveButton.isEnabled = false
+        } else {
+            textView.text = placeholder
+            textView.textColor = UIColor(named: "textColor")
+        }
+        
     }
     
     func editTextAction(_ textView: UITextView) {
@@ -60,7 +73,13 @@ class EditViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Дело"
+        if placeholder == "Что нужно сделать?" {
+            taskTitle.text = "Создание дела"
+        } else {
+            taskTitle.text = "Редактирование дела"
+        }
+        saveButton.layer.cornerRadius = 10
+        cancelButton.layer.cornerRadius = 10
 
         textViewPlaceholder(editTextView)
         editTextAction(editTextView)
