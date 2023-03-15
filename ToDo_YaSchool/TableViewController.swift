@@ -68,7 +68,7 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+     
         tableView.backgroundColor = UIColor(named: "backgroundColor")
         
         view.addSubview(floatingButton)
@@ -112,7 +112,7 @@ class TableViewController: UITableViewController {
             cell.imageView?.image = imageUncheck
             cell.textLabel?.textColor = UIColor(named: "textColor")
         }
-        
+        print(cell.textLabel?.font)
         
         if tableView.isEditing {
             pushEditOutlet.setTitle("Принять", for: .normal)
@@ -228,6 +228,7 @@ class TableViewController: UITableViewController {
             self.checkCount -= self.checkCount
             self.tableView.reloadData()
         }
+        tableView.reloadData()
         present(vc, animated: true)
     }
     

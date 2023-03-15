@@ -12,7 +12,7 @@
         <!--Мои дела-->
         <scene sceneID="Fdm-gX-7Bo">
             <objects>
-                <tableViewController storyboardIdentifier="myTasks" id="0Cz-f8-eck" customClass="TableViewController" customModule="ToDo_YaSchool" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="myTasks" id="0Cz-f8-eck" customClass="TableViewController" customModule="MyTasks" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="7dP-Yd-aF4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -86,7 +86,7 @@
         <!--Дело-->
         <scene sceneID="laL-GK-sKx">
             <objects>
-                <viewController storyboardIdentifier="other" id="nop-hB-vPv" customClass="EditViewController" customModule="ToDo_YaSchool" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="other" id="nop-hB-vPv" customClass="EditViewController" customModule="MyTasks" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HVS-2k-Ivp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
